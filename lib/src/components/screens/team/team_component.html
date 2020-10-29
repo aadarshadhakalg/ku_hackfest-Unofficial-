@@ -1,0 +1,5 @@
+<login *ngIf="databaseService.user == null"></login>
+
+<div *ngIf="databaseService.user != null">
+    <h1 style="text-align: center;">Team Route Works</h1>
+</div>

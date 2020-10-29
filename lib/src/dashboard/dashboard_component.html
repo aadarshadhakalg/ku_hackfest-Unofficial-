@@ -1,0 +1,88 @@
+  <material-drawer temporary #drawer="drawer" [class.custom-width]="customWidth">
+        <div group class="mat-drawer-spacer">
+            <div class="timeline-heading">
+            <span>Timeline</span>
+            </div>
+        </div>
+        <!-- Here is a group without a label -->
+        <material-list class="timeline-list">
+        <div group>
+            <timeline-item *ngFor="let event of events" [selectedEvent]='event'></timeline-item>
+        </div>
+      </material-list>
+  </material-drawer>
+
+
+<!-- This is menu drawer -->
+
+  <material-drawer class="menu-drawer" temporary end #drawer1="drawer" [class.custom-width]="customWidth">
+    <div group class="mat-drawer-spacer">
+        <div class="timeline-heading">
+        <span>Menu</span>
+        </div>
+    </div> 
+    <!-- Here is a group without a label -->
+    <material-list class="timeline-list">
+      <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.home.toUrl()" routerLinkActive="active-menu"><material-icon icon="home"></material-icon>Home</a>
+      </material-list-item>
+    <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.schedule.toUrl()" routerLinkActive="active-menu"><material-icon icon="settings_backup_restore"></material-icon>Schedule</a>
+    </material-list-item>
+          <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.project.toUrl()" routerLinkActive="active-menu"><material-icon icon="source"></material-icon>Project</a>
+          </material-list-item>
+          <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.team.toUrl()" routerLinkActive="active-menu"><material-icon icon="people"></material-icon>Team</a>
+          </material-list-item>
+          <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.profile.toUrl()" routerLinkActive="active-menu"><material-icon icon="person"></material-icon>Profile</a>
+          </material-list-item>
+          <material-list-item>
+        <a class="menu-links" [routerLink]="RoutePaths.faq.toUrl()" routerLinkActive="active-menu"><material-icon icon="question_answer"></material-icon>FAQ</a>
+          </material-list-item>
+  </material-list>
+</material-drawer>
+
+
+<!-- Main contents starts here -->
+
+  <material-content>
+    <header class="material-header">
+        <div class="material-header-row with-icon">
+          <material-button icon
+              class="material-drawer-button" (trigger)="drawer.toggle()">
+            <material-icon icon="timeline"></material-icon>
+          </material-button>
+          <span class="material-header-title">#KU HackFest 2020</span>
+          <div class="material-spacer"></div>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.home.toUrl()" routerLinkActive="active-route"><material-icon icon="home"></material-icon>Home</a>
+          </nav>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.schedule.toUrl()" routerLinkActive="active-route"><material-icon icon="settings_backup_restore"></material-icon>Schedule</a>
+          </nav>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.project.toUrl()" routerLinkActive="active-route"><material-icon icon="source"></material-icon>Project</a>
+          </nav>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.team.toUrl()" routerLinkActive="active-route"><material-icon icon="people"></material-icon>Team</a>
+          </nav>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.profile.toUrl()" routerLinkActive="active-route"><material-icon icon="person"></material-icon>Profile</a>
+          </nav>
+          <nav class="material-navigation">
+            <a class="hf-nav-links" [routerLink]="RoutePaths.faq.toUrl()" routerLinkActive="active-route"><material-icon icon="question_answer"></material-icon>FAQ</a>
+          </nav>
+          <div *ngIf="!mobile" class="material-spacer"></div>
+          <material-button icon *ngIf="mobile"
+              class="menu" (trigger)="drawer1.toggle()">
+            <material-icon icon="menu"></material-icon>
+          </material-button>
+          <span ></span>
+        </div>
+      </header>
+      <section>
+        <router-outlet [routes]="Routes.all"></router-outlet>
+      </section>
+  </material-content>

@@ -1,0 +1,13 @@
+<login *ngIf="databaseService.user == null"></login>
+
+<div *ngIf="databaseService.user != null">
+<h1 style="text-align: center;">Profile</h1>
+<div class="profileContainer">
+    <div class="card mdc-card mdc-card--outlined">
+        <img src="assets/images/mlh-logo.png" alt="mlh logo">
+    <h2 class="heading">{{databaseService.user.email}}</h2>
+    <material-button (trigger)="databaseService.signOut()">
+       Sign Out</material-button>
+    </div>
+</div>
+</div>
